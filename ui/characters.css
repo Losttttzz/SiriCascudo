@@ -1,0 +1,69 @@
+/* Estilo básico para o body */
+body {
+    background-color: #6ED1C5;
+    background-image: url("static/assets/fundoaa.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Garante que os cards fiquem alinhados no topo */
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Adiciona um pouco de espaço nas bordas */
+    box-sizing: border-box; /* Garante que o padding não sobrecarregue a largura da tela */
+}
+
+/* Container para os cards */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajusta o número de colunas automaticamente */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limita a largura máxima dos cards */
+    margin-top: 40px; /* Ajuste para garantir que os cards tenham espaço do topo */
+}
+
+/* Estilo dos cards */
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ajusta a imagem para garantir que não ultrapasse o tamanho do card */
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Efeito de hover nos cards */
+.card:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do card ao passar o mouse */
+}
+
+/* Estilo do botão */
+.choose-btn {
+    background-color: #6ED1C5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.choose-btn:hover {
+    background-color: #0a8475;
+}
