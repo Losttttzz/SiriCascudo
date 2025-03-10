@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="index.js"></script> <!-- Defere a execução do script -->
     <title>Siri-cascudo</title>
 </head>
 <body>
     <img id="logoA" src="static/assets/logo.png" alt="logo Siri-cascudo">
-    <iframe id="musica" width="0" height="0" src="https://youtu.be/aHvFnTg1ecs?si=H54ZZTyWu8gm7wUE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+    <iframe id="musica" width="1" height="1" src="https://www.youtube.com/embed/r9L4AseD-aA?autoplay=1&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     
     <div class="botoes-container">
-        <button class="botao">Montar Lanche</button>
+        <button class="botao" onclick="window.location.href='kitchen.html';">Montar Lanche</button>
         <button class="botao" onclick="window.location.href='characters.html';">Escolher Personagem</button>
-        <button class="botao">Créditos</button>
+        <button class="botao" onclick="window.location.href='credits.html';">Créditos</button>
     </div>
+    <div id="character-display"></div>
 </body>
 </html>

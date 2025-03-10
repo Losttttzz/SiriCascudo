@@ -1,4 +1,3 @@
-/* Estilo básico para o body */
 body {
     background-color: #6ED1C5;
     background-image: url("static/assets/fundoaa.png");
@@ -8,28 +7,44 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Garante que os cards fiquem alinhados no topo */
-    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 20px; /* Adiciona um pouco de espaço nas bordas */
-    box-sizing: border-box; /* Garante que o padding não sobrecarregue a largura da tela */
+    padding: 0;
 }
 
-/* Container para os cards */
+#back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 12px 18px;
+    font-size: 16px;
+    color: white;
+    background-color: #DF4F4F;;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#back-button:hover {
+    background-color: #762222;;
+}
+
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajusta o número de colunas automaticamente */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 20px;
     width: 100%;
-    max-width: 1200px; /* Limita a largura máxima dos cards */
-    margin-top: 40px; /* Ajuste para garantir que os cards tenham espaço do topo */
+    max-width: 600px;
+    margin-top: 40px;
+    justify-items: center;
 }
 
-/* Estilo dos cards */
+
 .card {
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -39,19 +54,16 @@ body {
     align-items: center;
 }
 
-/* Ajusta a imagem para garantir que não ultrapasse o tamanho do card */
 .card img {
     width: 100%;
     height: auto;
     border-radius: 10px;
 }
 
-/* Efeito de hover nos cards */
 .card:hover {
-    transform: scale(1.05); /* Aumenta o tamanho do card ao passar o mouse */
+    transform: scale(1.05);
 }
 
-/* Estilo do botão */
 .choose-btn {
     background-color: #6ED1C5;
     color: white;
@@ -66,4 +78,8 @@ body {
 
 .choose-btn:hover {
     background-color: #0a8475;
+}
+
+#voltar {
+    border: none;
 }

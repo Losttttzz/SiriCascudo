@@ -1,0 +1,100 @@
+body {
+    background-color: #6ED1C5;
+    background-image: url("static/assets/fundoaa.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1{
+    color: aliceblue;
+}
+
+img{
+    width: 300px;
+    animation: balancar 2s ease-in-out infinite;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Para centralizar verticalmente */
+    margin: 0;
+}
+
+#ab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%; /* Ajuste o valor conforme necessário */
+}
+
+#abc {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 40px; /* Espaço entre a imagem e o texto */
+}
+
+#abc h1 {
+    margin: 5px 0;
+}
+
+#ab img {
+    max-width: 150px; /* Ajuste o tamanho das imagens conforme necessário */
+    margin: 0 20px; /* Espaço entre as imagens e o texto */
+}
+
+#back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 12px 18px;
+    font-size: 16px;
+    color: white;
+    background-color: #DF4F4F;;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#back-button:hover {
+    background-color: #762222;;
+}
+
+@keyframes balancar {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}

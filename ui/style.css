@@ -1,4 +1,5 @@
 body {
+    user-select: none;
     background-color: #6ED1C5;
     background-image: url("static/assets/fundoaa.png");
     background-size: cover;
@@ -6,26 +7,37 @@ body {
     background-position: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza tudo horizontalmente */
+    align-items: center;
     height: 100vh;
     margin: 0;
 }
 
-/* Logo no topo */
 #logoA {
     width: 350px;
-    margin-top: 20px; /* Espaço do topo */
+    margin-top: 20px;
+    animation: balancar 2s ease-in-out infinite;
 }
 
-/* Contêiner dos botões */
+@keyframes balancar {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
 .botoes-container {
     display: flex;
-    flex-direction: column; /* Alinha os botões em coluna */
-    gap: 15px; /* Espaço entre os botões */
-    margin-top: 50px; /* Espaço entre a logo e os botões */
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
 }
 
-/* Estilização dos botões */
 .botao {
     background-color: white;
     color: #DF4F4F;
@@ -35,11 +47,38 @@ body {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.3s;
-    width: 200px; /* Define um tamanho fixo */
+    width: 200px;
     text-align: center;
 }
 
 .botao:hover {
     background-color: #FF9F9F;
     color: #DF4F4F;
+}
+
+#character-display {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 100px;
+    height: auto;
+}
+
+#character-display img {
+    width: 150px;
+    height: auto;
+}
+
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
