@@ -23,3 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Gera um número aleatório entre 1 e 5
+    let numeroAleatorio = Math.floor(Math.random() * 5) + 1;
+    
+    // Define o texto do balão de fala
+    document.getElementById("speech-text").textContent = `Eu gostaria de ${numeroAleatorio} hambúrguer`;
+});
