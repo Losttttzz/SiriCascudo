@@ -11,15 +11,40 @@
 </head>
 <body>
 
-    <!-- Contêiner para o personagem e o balão -->
-    <div id="character-container">
-        <div id="character-display">
-            <img src="static/assets/personagem.png" alt="Personagem">
+    <div class="container">
+        <div class="ingredients">
+            <menu>
+                <ul>
+                    <!-- Ingredientes serão inseridos aqui como <li> via JS -->
+                </ul>
+            </menu>
+            <p class="feedback"></p>
         </div>
-        <div id="speech-bubble">
-            <p id="speech-text"></p>
-        </div>
-    </div>
 
+        <div id="character-container">
+            <div id="character-display">
+                <img src="static/assets/personagem.png" alt="Personagem">
+            </div>
+            <div id="speech-bubble">
+                <p id="speech-text"></p>
+            </div>
+        </div>
+
+        <main>
+            <div class="counter">
+                <button></button>
+                <p></p>
+                <button></button>
+            </div>
+
+            <section class="order">
+                <ul>
+                    <!-- Hambúrgueres serão inseridos aqui como <li> via JS -->
+                </ul>
+                <button>Fechar pedido</button>
+            </section>
+        </main>
+    </div>
+    
 </body>
 </html>
