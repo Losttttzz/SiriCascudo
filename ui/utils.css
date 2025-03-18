@@ -1,0 +1,40 @@
+.flex {
+    display: flex;
+}
+
+.flex .center-horizontal {
+    justify-content: center;
+}
+
+.flex .center-vertical {
+    align-items: center;
+}
+
+.padding-4 {
+    padding: 1rem;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.full-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+.no-scroll.full-page {
+    box-sizing: border-box;
+}
+
+.bg-black {
+    background-color: #333;
+}
+
+.bg-black.bg-transparent {
+    background-color: #3333339A;
+}
+
+.border-round-4 {
+    border-radius: 1rem;
+}

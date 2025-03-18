@@ -9,19 +9,36 @@
     <script defer src="speech-bubble.js"></script> <!-- Script para atualizar o balão -->
     <title>Cozinha</title>
 </head>
-<body>
+<body class="full-page no-scroll flex center-vertical center-horizontal padding-4">
 
     <div class="container">
-        <div class="ingredients">
+        <div id="ingredients" class="padding-4">
             <menu>
                 <ul>
                     <!-- Ingredientes serão inseridos aqui como <li> via JS -->
+                    <li class="bg-black bg-transparent border-round-4">
+                        <img alt="aaa" src="./static/assets/piassi.png"/>
+                    </li>
+                    <li class="bg-black bg-transparent border-round-4">
+                        <img alt="aaa" src="./static/assets/piassi.png"/>
+                    </li>
+                    <li class="bg-black bg-transparent border-round-4">
+                        <img alt="aaa" src="./static/assets/piassi.png"/>
+                    </li>
+                    <li class="bg-black bg-transparent border-round-4">
+                        <img alt="aaa" src="./static/assets/piassi.png"/>
+                    </li>
+                    <li class="bg-black bg-transparent border-round-4">
+                        <img alt="aaa" src="./static/assets/piassi.png"/>
+                    </li>
+                    <li class="bg-black bg-transparent border-round-4">
+                        <img alt="aaa" src="./static/assets/piassi.png"/>
+                    </li>
                 </ul>
             </menu>
-            <p class="feedback"></p>
         </div>
 
-        <div id="character-container">
+        <div id="character">
             <div id="character-display">
                 <img src="static/assets/personagem.png" alt="Personagem">
             </div>
@@ -30,7 +47,8 @@
             </div>
         </div>
 
-        <main>
+        <main id="order">
+            <p class="feedback">Feedback</p>
             <div class="counter">
                 <button></button>
                 <p></p>
