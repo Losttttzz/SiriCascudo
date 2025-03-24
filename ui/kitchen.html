@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="kitchen.css">
     <script defer src="kitchen.js"></script>
     <script defer src="character-display.js"></script> 
-    <script defer src="speech-bubble.js"></script> <!-- Script para atualizar o balão -->
     <title>Cozinha</title>
 </head>
 <body class="full-page no-scroll flex center-vertical center-horizontal padding-4">
@@ -15,25 +14,7 @@
         <div id="ingredients" class="padding-4">
             <menu>
                 <ul>
-                    <!-- Ingredientes serão inseridos aqui como <li> via JS -->
-                    <li class="bg-black bg-transparent border-round-4">
-                        <img alt="aaa" src="./static/assets/piassi.png"/>
-                    </li>
-                    <li class="bg-black bg-transparent border-round-4">
-                        <img alt="aaa" src="./static/assets/piassi.png"/>
-                    </li>
-                    <li class="bg-black bg-transparent border-round-4">
-                        <img alt="aaa" src="./static/assets/piassi.png"/>
-                    </li>
-                    <li class="bg-black bg-transparent border-round-4">
-                        <img alt="aaa" src="./static/assets/piassi.png"/>
-                    </li>
-                    <li class="bg-black bg-transparent border-round-4">
-                        <img alt="aaa" src="./static/assets/piassi.png"/>
-                    </li>
-                    <li class="bg-black bg-transparent border-round-4">
-                        <img alt="aaa" src="./static/assets/piassi.png"/>
-                    </li>
+                    <!-- Ingredients will be rendered here -->
                 </ul>
             </menu>
         </div>
@@ -47,19 +28,23 @@
             </div>
         </div>
 
-        <main id="order">
-            <p class="feedback">Feedback</p>
+        <main id="order" class="margin-4 padding-4 bg-black bg-transparent border-round-4">
             <div class="counter">
-                <button></button>
-                <p></p>
-                <button></button>
+                <button class="no-bg" id="back">
+                    <img src="./static/assets/numbers/arrow-left.png" alt="Switch to left burger">
+                </button>
+                <img id="number" class="margin-2">
+                <button class="no-bg" id="next">
+                    <img src="./static/assets/numbers/arrow-right.png" alt="Switch to right burger">
+                </button>
             </div>
+            
 
-            <section class="order">
-                <ul>
-                    <!-- Hambúrgueres serão inseridos aqui como <li> via JS -->
+            <section>
+                <ul id="burgers" class="flex gap-2">
+                    <!-- Hamburgers will be rendered here via JS -->
                 </ul>
-                <button>Fechar pedido</button>
+                <button id="close-order" class="primary">Fechar pedido</button>
             </section>
         </main>
     </div>

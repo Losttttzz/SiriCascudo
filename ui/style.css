@@ -1,7 +1,18 @@
+@font-face {
+    font-family: 'bobesponja';
+    src: url('fonts/fonte.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'bobesponja', fantasy;
+}
+
 body {
     user-select: none;
     background-color: #6ED1C5;
-    background-image: url("static/assets/fundoaa.png");
+    background-image: url("static/assets/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
