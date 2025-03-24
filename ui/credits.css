@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Para centralizar verticalmente */
+    height: 100vh;
     margin: 0;
 }
 
@@ -36,14 +36,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%; /* Ajuste o valor conforme necessário */
+    width: 80%;
 }
 
 #abc {
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-left: 40px; /* Espaço entre a imagem e o texto */
+    margin-left: 40px;
 }
 
 #abc h1 {
@@ -51,8 +51,8 @@ body {
 }
 
 #ab img {
-    max-width: 150px; /* Ajuste o tamanho das imagens conforme necessário */
-    margin: 0 20px; /* Espaço entre as imagens e o texto */
+    max-width: 150px;
+    margin: 0 20px;
 }
 
 #back-button {

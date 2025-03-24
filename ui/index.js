@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function iniciarJogo() {
-    // Primeira tela de score com a primeira mensagem
     window.location.href = "score.html?message=" + encodeURIComponent(
         "Meu melhor funcionário Bob Esponja acabou ficando doente e não tem ninguém para fazer os hambúrgueres de siri. Preciso que você faça isso, relaxe eu vou te pagar.."
     );
@@ -55,3 +54,19 @@ function iniciarJogo() {
         );
     }, 20000);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const playButton = document.getElementById("play-button");
+
+    playButton.addEventListener("click", function () {
+        const selectedCharacter = localStorage.getItem("selectedCharacter");
+
+        if (selectedCharacter) {
+            window.location.href = "score.html?message=" + encodeURIComponent(
+                "Meu melhor funcionário Bob Esponja acabou ficando doente e não tem ninguém para fazer os hambúrgueres de siri. Preciso que você faça isso, relaxe eu vou te pagar.."
+            );
+        } else {
+            alert("Selecione um personagem!");
+        }
+    });
+});
