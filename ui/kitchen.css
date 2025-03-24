@@ -1,10 +1,13 @@
+@import url('./reset.css');
+@import url('./utils.css');
+@import url('./global-styles.css');
+
 body {
-    background-color: #6ED1C5;
-    background-image: url("static/assets/cozinha3.jpg");
+    background-color: var(--spongebob-aliceblue);
+    background-image: url("static/assets/kitchen-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,62 +16,162 @@ body {
     padding: 0;
 }
 
-#character-display {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    width: 100px;
-    height: auto;
-}
-
-#character-display img {
-    width: 150px;
-    height: auto;
-}
-
-body {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
 body.loaded {
     opacity: 1;
 }
-
 .fade-out {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
 
-#character-container {
-    position: fixed;
-    bottom: 50px;
-    left: 150px;
-    display: flex;
-    align-items: center;
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(2, 1fr);
 }
 
-#character-display img {
-    width: 150px;
+.container #ingredients {
+    grid-area: 1 / 1 / 2 / 2;
+}
+.container #ingredients menu ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+}
+.container #ingredients menu ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+.container #ingredients menu ul li.fire {
+    background: linear-gradient(45deg, rgba(255, 69, 0, 0.8), rgba(255, 140, 0, 0.8), rgba(255, 215, 0, 0.8));
+    animation: fire 2s infinite alternate;
+}
+.container #ingredients menu ul li img {
+    width: 75%;
+    height: 75%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.container #character {
+    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+}
+.container #character #character-display {
+    height: 100%;
+    width: 7rem;
+    display: flex;
+    align-items: end;
+}
+.container #character #character-display img {
+    width: 100%;
     height: auto;
 }
 
-#speech-bubble {
-    width: 300px;
-    min-height: 120px;
-    background-image: url("static/assets/balao.png");
+.container #character #speech-bubble {
+    width: 100%;
+    max-width: 15rem;
+    min-height: 8rem;
+    padding: 1rem 1rem 1rem 2rem;
+
+    background-image: url("static/assets/speech-bubble.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
-    padding: 20px;
+    font-family: 'spongebob', fantasy;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1.25em;
 }
 
-.container {
+.container #order {
+    grid-area: 1 / 2 / 3 / 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 9fr;
+    gap: 0.5rem;
+}
+.container #order section {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 9fr 1fr;
+    row-gap: 0.75rem;
+}
+.container #order #burgers {
+    overflow-y: auto;
+    padding-bottom: 0.25rem;
+}
+.container #order #burgers .plate {
+    min-width: 15rem;
+    max-width: 15rem;
+    background-color: var(--spongebob-white);
+    scroll-behavior: auto;
+    overflow: auto;
+    position: relative;
+}
+.container #order #burgers .plate.selected {
+    background-color: var(--spongebob-aliceblue);
+}
+.container #order #burgers .plate .plate-image {
+    z-index: 0;
+    object-fit: cover;
+    width: 8rem;
+    height: 3.5rem;
+}
+.container #order #burgers .plate .ingredient-image {
+    width: 7rem;
+    position: absolute;
+}
+
+.counter {
+    width: 100%;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.counter button {
+    height: 3rem;
+    cursor: pointer;
+}
+.counter button img {
+    height: 100%;
+}
+.counter #number {
+    height: 2.5rem;
+} 
+
+.summary-burger-header {
     
 }
+
+@keyframes fire {
+    0% {
+      background: linear-gradient(45deg, rgba(255, 69, 0, 0.8), rgba(255, 140, 0, 0.8), rgba(255, 215, 0, 0.8));
+      transform: scale(1);
+    }
+    50% {
+      background: linear-gradient(45deg, rgba(255, 215, 0, 0.6), rgba(255, 69, 0, 0.6), rgba(255, 140, 0, 0.6));
+      transform: scale(1.05);
+    }
+    100% {
+      background: linear-gradient(45deg, rgba(255, 69, 0, 0.9), rgba(255, 140, 0, 0.9), rgba(255, 215, 0, 0.9));
+      transform: scale(1);
+    }
+  }

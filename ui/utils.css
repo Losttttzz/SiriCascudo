@@ -1,0 +1,103 @@
+@import url('./global-styles.css');
+
+.flex {
+    display: flex;
+}
+.flex.column-reverse {
+    flex-direction: column-reverse;
+}
+.flex.center-horizontal {
+    justify-content: center;
+}
+.flex.center-vertical {
+    align-items: center;
+}
+.flex.end-horizontal {
+    justify-content: end;
+}
+.flex.gap-2 { gap: 0.5rem }
+
+.padding-4 { padding: 1rem; }
+.padding-5 { padding: 1.25rem; }
+
+.margin-4 { margin: 1rem; }
+.margin-2 { margin: 0.5rem; }
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+.full-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+.no-scroll.full-page {
+    box-sizing: border-box;
+}
+
+.no-bg {
+    background: none;
+    border: none;
+}
+
+.bg-black {
+    background-color: var(--spongebob-black) !important;
+}
+.bg-green {
+    background-color: var(--spongebob-green) !important;
+}
+.bg-black.bg-transparent {
+    background-color: #3333339A;
+}
+
+.border-round-4 {
+    border-radius: 1rem;
+}
+
+button, .clickable {
+    cursor: pointer;
+}
+button {
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1em;
+    padding: 0.5rem 1rem
+}
+button.primary {
+    background-color: var(--spongebob-aliceblue);
+    color: var(--spongebob-dark-blue);
+}
+button.primary:hover {
+    transition: 0.5s;
+    background-color: #61BEB3;
+}
+button.secondary {
+    background-color: var(--spongebob-red);
+    color: var(--spongebob-white);
+}
+button.secondary:hover {
+    background-color: #C54A4A;
+}
+
+.modal.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal.content {
+    background-color: var(--spongebob-white);
+    text-align: center;
+    max-width: 80%;
+}
+.modal.content p {
+    margin-bottom: 1.25rem;
+    font-family: 'spongebob', fantasy;
+}
