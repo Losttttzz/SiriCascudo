@@ -118,17 +118,37 @@ body.loaded {
     overflow-y: auto;
     padding-bottom: 0.25rem;
 }
+
 .container #order #burgers .plate {
     min-width: 15rem;
     max-width: 15rem;
-    background-color: var(--spongebob-white);
-    scroll-behavior: auto;
-    overflow: auto;
+    background-image: url("static/assets/unselectedbackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    overflow: hidden;
     position: relative;
 }
-.container #order #burgers .plate.selected {
-    background-color: var(--spongebob-aliceblue);
+
+.container #order #burgers .plate .plate-image {
+    position: relative;
+    top: 8px;
+    z-index: 1;
 }
+
+.container #order #burgers .plate.selected {
+    background-image: url("static/assets/selectedbackground.png");
+}
+
+
+.container #order #burgers .plate.selected {
+    background-image: url("static/assets/selectedbackground.png");
+}
+
 .container #order #burgers .plate .plate-image {
     z-index: 0;
     object-fit: cover;
