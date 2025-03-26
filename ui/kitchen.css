@@ -157,8 +157,25 @@ body.loaded {
     height: 2.5rem;
 } 
 
+.summary {
+    max-height: 80vh;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+.summary p {
+    margin: 0.25rem 0.5rem 0.25rem 1rem !important;
+    text-align: start;
+    color: var(--spongebob-gray);
+    font-size: 0.75em;
+}
 .summary-burger-header {
-    
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+.summary-burger-header > p {
+    color: var(--spongebob-black);
+    font-size: 1em;
+    margin: 0 0.5rem 0.25rem 0 !important;
 }
 
 @keyframes fire {

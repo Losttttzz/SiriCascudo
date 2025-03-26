@@ -1,3 +1,5 @@
+import characterSchema from "../data/database/model/character";
+
 function startRenderer(kitchenState) {
     const observers = []
 
@@ -32,7 +34,6 @@ function startRenderer(kitchenState) {
     }
 
     function managePreparationAnimation(command) {
-        console.log(command)
         const ingredientElement = document.querySelector(`[data-ingredientid="${command.ingredientId}"]`);
         if(command.isPreparing) {
             ingredientElement.classList.add('fire');
@@ -136,6 +137,9 @@ function startRenderer(kitchenState) {
         const content = document.createElement("div");
         content.classList.add('modal', 'content', 'padding-5', 'border-round-4');
         
+        const summary = document.createElement("div");
+        summary.classList.add('summary');
+
         const order = kitchenState.burgers;
 
         order.forEach((burger) => {
@@ -155,7 +159,7 @@ function startRenderer(kitchenState) {
             burgerHeaderElement.appendChild(burgerTitleElement);
             burgerHeaderElement.appendChild(burgerPriceElement);
             burgerHeaderElement.appendChild(burgerKcalElement);
-            content.appendChild(burgerHeaderElement);
+            summary.appendChild(burgerHeaderElement);
 
             const counts = {};
             ingredients.forEach(({ name }) => {
@@ -165,7 +169,7 @@ function startRenderer(kitchenState) {
             for(const item in counts) {
                 const ingredientCountElement = document.createElement('p');
                 ingredientCountElement.innerText = `${counts[item]}x ${item}`;
-                content.appendChild(ingredientCountElement);
+                summary.appendChild(ingredientCountElement);
             }
         })
         
@@ -182,6 +186,7 @@ function startRenderer(kitchenState) {
             document.body.removeChild(modal);
         };
         
+        content.appendChild(summary);
         content.appendChild(closeButton);
         content.appendChild(confirmButton);
         modal.appendChild(content);
@@ -435,11 +440,29 @@ function startKitchen(requestedBurgers) {
         }
     }
 
+    function createOrderPayload() {
+        const characterData = localStorage.getItem("selectedCharacter");
+        const character = JSON.parse(characterData);
+
+        const orderPayload = {
+            character: {
+                name: character.name,
+                image: character.image,
+            },
+            burgers: [
+
+            ]
+        };
+
+        notifyAll({type: 'save-order', command: orderPayload});
+    }
+
     function handleNotification(notification) {
         const actions = {
             'update-counter': (command) => updateCounter(command),
             'ingredient-selection': (command) => addIngredient(command),
             'close-order': () => closeOrder(),
+            'confirm-order': () => createOrderPayload()
         }
         if(actions[notification.type]) {
             actions[notification.type](notification.command)
@@ -455,9 +478,21 @@ function startKitchen(requestedBurgers) {
 
 function createHttpService() {
 
+    const url = 'http://localhost:3000';
+
+    function saveOrder(command) {
+        console.log(command)
+        // fetch(`${url}/order`, {
+        //     method: 'POST',
+        //     body: {
+
+        //     }
+        // });
+    }
+
     function handleNotification(notification) {
         const actions = {
-            'confirm-order': () => {},
+            'save-order': (command) => saveOrder(command),
         }
         if(actions[notification.type]) {
             actions[notification.type](notification.command)

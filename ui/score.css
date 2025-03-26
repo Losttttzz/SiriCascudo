@@ -1,7 +1,7 @@
 body {
     user-select: none;
     background-color: #6ED1C5;
-    background-image: url("static/assets/fundoaa.png");
+    background-image: url("static/assets/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -28,7 +28,7 @@ body {
 
 #box {
     position: absolute;
-    bottom: -20%; /* Ajuste da posição da caixa */
+    bottom: -20%; 
     z-index: 2;
     width: 400px;
     text-align: center;

@@ -5,6 +5,7 @@
     --spongebob-white: #FAFAFA;
     --spongebob-green: #0C8129;
     --spongebob-black: #333;
+    --spongebob-gray: #6D6D6D;
 }
 
 @font-face {
@@ -13,9 +14,10 @@
     font-weight: normal;
     font-style: normal;
 }
-    
+   
 * {
     font-family: 'spongebob', fantasy;
+    color: var(--spongebob-black);
 }
 
 ::-webkit-scrollbar {
