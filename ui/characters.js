@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     buttons.forEach((button, index) => {
         button.addEventListener("click", function () {
             const characterImg = button.parentElement.querySelector("img");
-            const characterSrc = characterImg.src;
-            const characterAlt = characterImg.alt;
 
-            localStorage.setItem("selectedCharacter", JSON.stringify({ src: characterSrc, alt: characterAlt }));
+            const characterSrc = characterImg.src; 
+            const characterAlt = characterImg.alt; 
+
+            localStorage.setItem("selectedCharacter", JSON.stringify({ image: characterSrc, name: characterAlt }));
 
             window.location.href = "index.html";
         });

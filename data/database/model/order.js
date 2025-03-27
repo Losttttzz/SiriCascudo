@@ -3,7 +3,6 @@ import characterSchema from './character.js';
 import burgerSchema from './burger.js';
 
 const orderSchema = new mongoose.Schema({
-  name: String,
   character: characterSchema,
   burgers: [burgerSchema],
 });

@@ -1,25 +1,5 @@
-/**
- * Abrir pedido (varios clientes ao mesmo tempo)
- * Montar hamburger (varios hamburgeres ao mesmo tempo)
- * Fechar hamburger
- * Fechar pedido 
- * Delivery
- */
-
 document.addEventListener("DOMContentLoaded", function () {
-    const characterData = localStorage.getItem("selectedCharacter");
 
-    if (characterData) {
-        const character = JSON.parse(characterData);
-        const characterContainer = document.getElementById("character-display");
-
-        if (characterContainer) {
-            characterContainer.innerHTML = `<img src="${character.src}" alt="${character.alt}">`;
-        }
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("loaded");
 
     const buttons = document.querySelectorAll(".botao");
@@ -36,37 +16,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = targetPage;
             }, 500);
         });
-    });
-});
-
-function iniciarJogo() {
-    window.location.href = "score.html?message=" + encodeURIComponent(
-        "Meu melhor funcionário Bob Esponja acabou ficando doente e não tem ninguém para fazer os hambúrgueres de siri. Preciso que você faça isso, relaxe eu vou te pagar.."
-    );
-
-    setTimeout(() => {
-        window.location.href = "kitchen.html";
-    }, 5000);
-
-    setTimeout(() => {
-        window.location.href = "score.html?message=" + encodeURIComponent(
-            "Parabéns! Você fez um ótimo trabalho e aqui está seu pagamento!"
-        );
-    }, 20000);
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const playButton = document.getElementById("play-button");
-
-    playButton.addEventListener("click", function () {
-        const selectedCharacter = localStorage.getItem("selectedCharacter");
-
-        if (selectedCharacter) {
-            window.location.href = "score.html?message=" + encodeURIComponent(
-                "Meu melhor funcionário Bob Esponja acabou ficando doente e não tem ninguém para fazer os hambúrgueres de siri. Preciso que você faça isso, relaxe eu vou te pagar.."
-            );
-        } else {
-            alert("Selecione um personagem!");
-        }
     });
 });

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script defer src="index.js"></script>
+    <script defer src="character-display.js"></script>
     <title>Siri-cascudo</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
     <iframe id="musica" width="1" height="1" src="https://www.youtube.com/embed/r9L4AseD-aA?autoplay=1&mute=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     
     <div class="botoes-container">
-        <button class="botao" id="play-button">Jogar</button>
+        <button class="botao" onclick="window.location.href = 'score.html?status=start';">Jogar</button>
         <button class="botao" onclick="window.location.href='characters.html';">Escolher Personagem</button>
         <button class="botao" onclick="window.location.href='credits.html';">Créditos</button>
     </div>

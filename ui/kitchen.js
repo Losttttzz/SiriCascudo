@@ -32,7 +32,6 @@ function startRenderer(kitchenState) {
     }
 
     function managePreparationAnimation(command) {
-        console.log(command)
         const ingredientElement = document.querySelector(`[data-ingredientid="${command.ingredientId}"]`);
         if(command.isPreparing) {
             ingredientElement.classList.add('fire');
@@ -136,6 +135,9 @@ function startRenderer(kitchenState) {
         const content = document.createElement("div");
         content.classList.add('modal', 'content', 'padding-5', 'border-round-4');
         
+        const summary = document.createElement("div");
+        summary.classList.add('summary');
+
         const order = kitchenState.burgers;
 
         order.forEach((burger) => {
@@ -155,7 +157,7 @@ function startRenderer(kitchenState) {
             burgerHeaderElement.appendChild(burgerTitleElement);
             burgerHeaderElement.appendChild(burgerPriceElement);
             burgerHeaderElement.appendChild(burgerKcalElement);
-            content.appendChild(burgerHeaderElement);
+            summary.appendChild(burgerHeaderElement);
 
             const counts = {};
             ingredients.forEach(({ name }) => {
@@ -165,7 +167,7 @@ function startRenderer(kitchenState) {
             for(const item in counts) {
                 const ingredientCountElement = document.createElement('p');
                 ingredientCountElement.innerText = `${counts[item]}x ${item}`;
-                content.appendChild(ingredientCountElement);
+                summary.appendChild(ingredientCountElement);
             }
         })
         
@@ -182,6 +184,7 @@ function startRenderer(kitchenState) {
             document.body.removeChild(modal);
         };
         
+        content.appendChild(summary);
         content.appendChild(closeButton);
         content.appendChild(confirmButton);
         modal.appendChild(content);
@@ -257,7 +260,7 @@ function startInteractionListener() {
 
     function setupCloseOrderButton() {
         const closeOrderButtonElement = document.getElementById('close-order');
-        closeOrderButtonElement.addEventListener('click', () => notifyAll({type: 'close-order'}));
+        closeOrderButtonElement.addEventListener('click', () => notifyAll({type: 'valid-order'}));
     }
 
     setupCounter();
@@ -401,9 +404,8 @@ function startKitchen(requestedBurgers) {
             if(!validateIngredients(burger.ingredients)) {
                 return;
             }
-
-            notifyAll({type: 'close-order'});
         });
+        notifyAll({type: 'close-order'});
     }
 
     function validateIngredients(ingredients, specificIngredient) {
@@ -435,11 +437,53 @@ function startKitchen(requestedBurgers) {
         }
     }
 
+    function createOrderPayload() {
+        const characterData = localStorage.getItem("selectedCharacter");
+        const character = JSON.parse(characterData);
+
+        const burgers = state.burgers.map(burger => {
+            const ingredientMap = new Map();
+            let totalPrice = 0;
+            let totalKcal = 0;
+    
+            burger.ingredients.forEach(ingredient => {
+                const { name, price, kcal, label } = ingredient;
+                const amount = ingredient.min || 1;
+    
+                if (ingredientMap.has(label)) {
+                    ingredientMap.get(label).amount += amount;
+                } else {
+                    ingredientMap.set(label, { name, amount });
+                }
+    
+                totalPrice += price * amount;
+                totalKcal += kcal * amount;
+            });
+    
+            return {
+                price: totalPrice,
+                kcal: totalKcal,
+                ingredients: Array.from(ingredientMap.values())
+            };
+        });
+
+        const orderPayload = {
+            character: {
+                name: character.name,
+                image: character.image,
+            },
+            burgers: burgers
+        };
+
+        notifyAll({type: 'save-order', command: {payload: orderPayload, callback: window.location.href = 'score.html?status=end'}});
+    }
+
     function handleNotification(notification) {
         const actions = {
             'update-counter': (command) => updateCounter(command),
             'ingredient-selection': (command) => addIngredient(command),
-            'close-order': () => closeOrder(),
+            'valid-order': () => closeOrder(),
+            'confirm-order': () => createOrderPayload()
         }
         if(actions[notification.type]) {
             actions[notification.type](notification.command)
@@ -455,9 +499,22 @@ function startKitchen(requestedBurgers) {
 
 function createHttpService() {
 
+    const url = 'http://localhost:3000';
+
+    function saveOrder(command) {
+        fetch(`${url}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(command.payload),
+        })
+        .then(command.callback);
+    }
+
     function handleNotification(notification) {
         const actions = {
-            'confirm-order': () => {},
+            'save-order': (command) => saveOrder(command),
         }
         if(actions[notification.type]) {
             actions[notification.type](notification.command)
@@ -480,5 +537,6 @@ const interactions = startInteractionListener();
 const httpService = createHttpService();
 
 kitchen.subscribe(renderer.handleNotification);
+kitchen.subscribe(httpService.handleNotification);
 interactions.subscribe(kitchen.handleNotification);
-renderer.subscribe(httpService.handleNotification);
+renderer.subscribe(kitchen.handleNotification);

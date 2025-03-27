@@ -80,6 +80,7 @@ button.primary:hover {
 button.secondary {
     background-color: var(--spongebob-red);
     color: var(--spongebob-white);
+    margin: 0 0.5rem;
 }
 button.secondary:hover {
     background-color: #C54A4A;
