@@ -1,5 +1,3 @@
-import characterSchema from "../data/database/model/character";
-
 function startRenderer(kitchenState) {
     const observers = []
 
@@ -262,7 +260,7 @@ function startInteractionListener() {
 
     function setupCloseOrderButton() {
         const closeOrderButtonElement = document.getElementById('close-order');
-        closeOrderButtonElement.addEventListener('click', () => notifyAll({type: 'close-order'}));
+        closeOrderButtonElement.addEventListener('click', () => notifyAll({type: 'valid-order'}));
     }
 
     setupCounter();
@@ -406,9 +404,8 @@ function startKitchen(requestedBurgers) {
             if(!validateIngredients(burger.ingredients)) {
                 return;
             }
-
-            notifyAll({type: 'close-order'});
         });
+        notifyAll({type: 'close-order'});
     }
 
     function validateIngredients(ingredients, specificIngredient) {
@@ -444,14 +441,38 @@ function startKitchen(requestedBurgers) {
         const characterData = localStorage.getItem("selectedCharacter");
         const character = JSON.parse(characterData);
 
+        const burgers = state.burgers.map(burger => {
+            const ingredientMap = new Map();
+            let totalPrice = 0;
+            let totalKcal = 0;
+    
+            burger.ingredients.forEach(ingredient => {
+                const { name, price, kcal, label } = ingredient;
+                const amount = ingredient.min || 1;
+    
+                if (ingredientMap.has(label)) {
+                    ingredientMap.get(label).amount += amount;
+                } else {
+                    ingredientMap.set(label, { name, amount });
+                }
+    
+                totalPrice += price * amount;
+                totalKcal += kcal * amount;
+            });
+    
+            return {
+                price: totalPrice,
+                kcal: totalKcal,
+                ingredients: Array.from(ingredientMap.values())
+            };
+        });
+
         const orderPayload = {
             character: {
                 name: character.name,
                 image: character.image,
             },
-            burgers: [
-
-            ]
+            burgers: burgers
         };
 
         notifyAll({type: 'save-order', command: orderPayload});
@@ -461,7 +482,7 @@ function startKitchen(requestedBurgers) {
         const actions = {
             'update-counter': (command) => updateCounter(command),
             'ingredient-selection': (command) => addIngredient(command),
-            'close-order': () => closeOrder(),
+            'valid-order': () => closeOrder(),
             'confirm-order': () => createOrderPayload()
         }
         if(actions[notification.type]) {
@@ -481,13 +502,13 @@ function createHttpService() {
     const url = 'http://localhost:3000';
 
     function saveOrder(command) {
-        console.log(command)
-        // fetch(`${url}/order`, {
-        //     method: 'POST',
-        //     body: {
-
-        //     }
-        // });
+        fetch(`${url}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(command),
+        });
     }
 
     function handleNotification(notification) {
@@ -515,5 +536,6 @@ const interactions = startInteractionListener();
 const httpService = createHttpService();
 
 kitchen.subscribe(renderer.handleNotification);
+kitchen.subscribe(httpService.handleNotification);
 interactions.subscribe(kitchen.handleNotification);
-renderer.subscribe(httpService.handleNotification);
+renderer.subscribe(kitchen.handleNotification);
