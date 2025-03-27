@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     buttons.forEach((button, index) => {
         button.addEventListener("click", function () {
             const characterImg = button.parentElement.querySelector("img");
+
             const characterSrc = characterImg.src; 
             const characterAlt = characterImg.alt; 
 
