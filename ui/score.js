@@ -1,24 +1,16 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const continueBtn = document.getElementById("continue-btn");
+const continueButtonElement = document.getElementById("continue-btn");
+const messageElement = document.getElementById("score-message");
+const params = new URLSearchParams(window.location.search);
 
-    continueBtn.addEventListener("click", function () {
-        if (!localStorage.getItem("visitedKitchen")) {
-            // Se ainda não passou pela cozinha, vai para kitchen.html
-            localStorage.setItem("visitedKitchen", "true");
-            window.location.href = "kitchen.html";
-        } else {
-            // Se já passou pela cozinha, exibe o alerta e volta para index.html
-            alert("Você recebeu 1 real!");
-            localStorage.removeItem("visitedKitchen"); // Reseta para futuras partidas
-            window.location.href = "index.html";
-        }
-    });
-
-    // Define a mensagem correta na tela
-    const params = new URLSearchParams(window.location.search);
-    const message =
-        params.get("message") ||
-        "Obrigado por me ajudar a montar os hambúrguer de siri!!<br>Aqui seu pagamento..";
-
-    document.getElementById("score-message").innerHTML = message;
-});
+if(params.get("status") === 'start') {
+    messageElement.innerText = 
+        "Meu melhor funcionário Bob Esponja acabou ficando doente e não tem ninguém para fazer os hambúrgueres de siri. Preciso que você faça isso, relaxe eu vou te pagar...";
+    continueButtonElement.addEventListener("click", () => window.location.href = "kitchen.html")
+} else {
+    messageElement.innerText = 
+        "Obrigado por me ajudar a montar os hambúrguer de siri!! Aqui seu pagamento...";
+    continueButtonElement.addEventListener("click", () => {
+        alert("Você recebeu 1 real!");
+        window.location.href = "index.html";
+    })
+}

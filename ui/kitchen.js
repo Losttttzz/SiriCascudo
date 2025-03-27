@@ -475,7 +475,7 @@ function startKitchen(requestedBurgers) {
             burgers: burgers
         };
 
-        notifyAll({type: 'save-order', command: orderPayload});
+        notifyAll({type: 'save-order', command: {payload: orderPayload, callback: window.location.href = 'score.html?status=end'}});
     }
 
     function handleNotification(notification) {
@@ -507,8 +507,9 @@ function createHttpService() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(command),
-        });
+            body: JSON.stringify(command.payload),
+        })
+        .then(command.callback);
     }
 
     function handleNotification(notification) {
