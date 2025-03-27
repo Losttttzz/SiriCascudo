@@ -45,7 +45,7 @@ function startRenderer(kitchenState) {
     function renderSpeechBubble() {
         const speechBubbleElement = document.getElementById("speech-text");
         speechBubbleElement.textContent = 
-            `Eu gostaria de ${kitchenState.requestedBurgers} ${kitchenState.requestedBurgers > 1 ? 'hamburgers' : 'hamburger'}.`;
+            `O primeiro cliente pediu ${kitchenState.requestedBurgers} ${kitchenState.requestedBurgers > 1 ? 'hamburgueres' : 'hamburguer'}.`;
     }
 
     function renderCounter() {
