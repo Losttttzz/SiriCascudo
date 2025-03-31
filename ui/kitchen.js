@@ -182,7 +182,9 @@ function startRenderer(kitchenState) {
         confirmButton.onclick = () => {
             notifyAll({type: 'confirm-order'});
             document.body.removeChild(modal);
+            window.location.href = "score.html";
         };
+        
         
         content.appendChild(summary);
         content.appendChild(closeButton);
