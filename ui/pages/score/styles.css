@@ -1,0 +1,35 @@
+@import url('../../static/styles/global-styles.css');
+
+body {
+    background-image: url("../../static/assets/background.png");
+}
+
+.container {
+    position: relative;
+}
+.container > img {
+    max-width: 25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.container #box {
+    position: absolute;
+    bottom: -20%; 
+    z-index: 2;
+    width: 25rem;
+}
+
+.bubbles {
+    width: 100%;
+    display: block;
+}
+
+#box p {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--spongebob-dark-blue);
+    width: 80%;
+}

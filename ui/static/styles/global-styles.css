@@ -1,5 +1,9 @@
+@import url('reset.css');
+@import url('utils.css');
+
 :root {
     --spongebob-aliceblue: #6ED1C5;
+    --spongebob-purple: #9570FF;
     --spongebob-red: #DF4F4F;
     --spongebob-dark-blue: #044C5B;
     --spongebob-white: #FAFAFA;
@@ -10,14 +14,20 @@
 
 @font-face {
     font-family: 'spongebob';
-    src: url('fonts/fonte.ttf') format('truetype');
+    src: url('../fonts/fonte.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
    
 * {
-    font-family: 'spongebob', fantasy;
+    font-family: 'spongebob', fantasy !important;
     color: var(--spongebob-black);
+
+    box-sizing: border-box;
+}
+
+body {
+    user-select: none;
 }
 
 ::-webkit-scrollbar {

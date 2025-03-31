@@ -23,7 +23,7 @@ function startRenderer(kitchenState) {
             ingredientElement.setAttribute('data-ingredientid', i);
     
             const imgElement = document.createElement('img');
-            imgElement.setAttribute('src', `./static/assets/ingredients/${ingredient.label}-icon.png`);
+            imgElement.setAttribute('src', `../../static/assets/ingredients/${ingredient.label}-icon.png`);
             imgElement.setAttribute('alt', `Adicionar ${ingredient.name}`);
     
             ingredientElement.appendChild(imgElement);
@@ -50,7 +50,7 @@ function startRenderer(kitchenState) {
 
     function renderCounter() {
         const counterNumberElement = document.querySelector('.counter #number');
-        counterNumberElement.setAttribute('src', `./static/assets/numbers/${kitchenState.selectedBurger+1}.png`);
+        counterNumberElement.setAttribute('src', `../../static/assets/numbers/${kitchenState.selectedBurger+1}.png`);
         counterNumberElement.setAttribute('alt', `Montando o ${kitchenState.selectedBurger+1} hambúrger`);
     }
 
@@ -61,7 +61,7 @@ function startRenderer(kitchenState) {
                 plateElement.classList.add('padding-4', 'flex', 'column-reverse', 'center-vertical', 'end-horizontal', 'plate', 'selected') :
                 plateElement.classList.add('padding-4', 'flex', 'column-reverse', 'center-vertical', 'end-horizontal', 'plate')
             const plateImageElement = document.createElement('img');
-            plateImageElement.setAttribute('src', './static/assets/ingredients/plate.png');
+            plateImageElement.setAttribute('src', '../../static/assets/ingredients/plate.png');
             plateImageElement.setAttribute('alt', 'Prato');
             plateImageElement.classList.add('plate-image')
             plateElement.appendChild(plateImageElement);
@@ -70,7 +70,7 @@ function startRenderer(kitchenState) {
 
         function createIngredientElement(label, name, position) {
             const ingredientElement = document.createElement('img');
-            ingredientElement.setAttribute('src', `./static/assets/ingredients/${label}.png`);
+            ingredientElement.setAttribute('src', `../../static/assets/ingredients/${label}.png`);
             ingredientElement.setAttribute('alt', name);
             ingredientElement.classList.add('ingredient-image');
             ingredientElement.style.zIndex = position;
@@ -400,12 +400,15 @@ function startKitchen(requestedBurgers) {
     }
 
     function closeOrder() {
+        let isOrderValid = true;
         state.burgers.forEach((burger) => {
             if(!validateIngredients(burger.ingredients)) {
-                return;
+                isOrderValid = false;
             }
         });
-        notifyAll({type: 'close-order'});
+        if(isOrderValid) {
+            notifyAll({type: 'close-order'});
+        }
     }
 
     function validateIngredients(ingredients, specificIngredient) {
@@ -475,7 +478,7 @@ function startKitchen(requestedBurgers) {
             burgers: burgers
         };
 
-        notifyAll({type: 'save-order', command: {payload: orderPayload, callback: window.location.href = 'score.html?status=end'}});
+        notifyAll({type: 'save-order', command: {payload: orderPayload, callback: window.location.href = '/score?status=end'}});
     }
 
     function handleNotification(notification) {
