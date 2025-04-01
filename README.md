@@ -30,12 +30,15 @@ Este projeto foi desenvolvido com o propósito de estudar a programação assín
 
 ### 1️⃣ Clonar o Repositório
 ```bash
- git clone https://github.com/seu-usuario/bobs-burger-maker.git
- cd data
+ git clone https://github.com/Losttttzz/SiriCascudo.git
 ```
 
 ### 2️⃣ Instalar as Dependências
 ```bash
+ cd data
+ npm install
+
+ cd ui
  npm install
 ```
 
@@ -48,6 +51,10 @@ PORT=3000
 
 ### 4️⃣ Iniciar o Servidor Backend
 ```bash
+ cd data
+ npm start
+
+ cd ui
  npm start
 ```
 
