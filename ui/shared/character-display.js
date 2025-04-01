@@ -1,4 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", loadCharacter);
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+        loadCharacter();
+    }
+});
+
+function loadCharacter() {
     const characterData = localStorage.getItem("selectedCharacter");
 
     if (characterData) {
@@ -9,4 +16,4 @@ document.addEventListener("DOMContentLoaded", function () {
             characterContainer.innerHTML = `<img src="${character.imagePath}" alt="${character.name}">`;
         }
     }
-});
+}
