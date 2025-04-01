@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../static/assets/logo.png">
+    <script defer src="main.js"></script>
+    <script defer src="../../shared/character-display.js"></script>
+    <title>Siri Cascudo</title>
+</head>
+<body class="flex column center-vertical full-page load-animation">
+    <iframe 
+        id="musica" 
+        width="1" 
+        height="1" 
+        src="https://www.youtube.com/embed/r9L4AseD-aA?autoplay=1&mute=0" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen
+    ></iframe>
+
+    <img class="logo margin-6 float" src="../../static/assets/logo.png" alt="logo Siri Cascudo">
+    <div class="flex column gap-3 margin-6">
+        <button id="play-button" class="secondary outline big">Jogar</button>
+        <button id="history-button" class="secondary outline big">Antigos pedidos</button>
+        <button id="characters-button" class="secondary outline big">Escolher Personagem</button>
+        <button id="credits-button" class="secondary outline big">Créditos</button>
+    </div>
+
+    <div id="character-display"></div>
+</body>
+</html>

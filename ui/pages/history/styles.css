@@ -1,0 +1,42 @@
+@import url('../../static/styles/global-styles.css');
+
+body {
+  background-image: url("../../static/assets/background.png");
+}
+
+h1 {
+  color: var(--spongebob-black);
+}
+
+#back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#orders-container {
+  margin-top: 1rem;
+}
+
+.order-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 19rem;
+}
+
+.order-card h2 {
+  margin-bottom: 1rem;
+}
+
+.order-card img {
+  width: 6rem;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.burger-card {
+  margin-top: 0.5rem;
+}
+
+.burger-card p {
+  margin: 0.25rem 0;
+}

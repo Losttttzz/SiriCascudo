@@ -1,0 +1,20 @@
+@import url('../../static/styles/global-styles.css');
+
+body {
+    background-image: url("../../static/assets/background.png");
+}
+
+h1, p {
+    color: var(--spongebob-white);
+}
+
+.dev-image {
+    width: 10rem;
+    max-width: 10rem;
+}
+
+#back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}

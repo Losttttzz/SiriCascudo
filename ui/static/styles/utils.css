@@ -1,0 +1,190 @@
+@import url('./global-styles.css');
+
+.flex {
+    display: flex;
+}
+.flex.column-reverse {
+    flex-direction: column-reverse;
+}
+.flex.column {
+    flex-direction: column;
+}
+.flex.center-horizontal {
+    justify-content: center;
+}
+.flex.center-vertical {
+    align-items: center;
+}
+.flex.end-horizontal {
+    justify-content: end;
+}
+.flex.space-between {
+    justify-content: space-between;
+}
+.flex.wrap {
+    flex-wrap: wrap;
+}
+.flex.gap-1 { gap: 0.25rem }
+.flex.gap-2 { gap: 0.5rem }
+.flex.gap-3 { gap: 0.75rem }
+
+.padding-1 { padding: 0.25rem; }
+.padding-2 { padding: 0.5rem; }
+.padding-3 { padding: 0.75rem; }
+.padding-4 { padding: 1rem; }
+.padding-5 { padding: 1.25rem; }
+
+.margin-2 { margin: 0.5rem !important; }
+.margin-4 { margin: 1rem !important; }
+.margin-6 { margin: 1.5rem !important; }
+
+.title.font-small { font-size: 1rem; }
+.title.font-regular { font-size: 1.5rem; }
+.title.font-big { font-size: 2rem; }
+
+.font-small { font-size: 0.75rem; }
+.font-regular { font-size: 1rem; }
+.font-big { font-size: 1.25rem; }
+
+.bold { font-weight: bold; }
+.text-center { text-align: center; }
+
+.no-scroll { overflow: hidden; }
+.scroll-vertical { 
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: fit-content !important;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+.full-width {
+    width: 100%;
+}
+
+.full-page {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.width-100 { width: 100%; }
+.width-90 { width: 90%; }
+.width-80 { width: 80%; }
+
+.no-scroll.full-page {
+    box-sizing: border-box;
+}
+
+.no-bg {
+    background: none;
+    border: none;
+}
+.bg-white { background-color: var(--spongebob-white) !important; }
+.bg-black { background-color: var(--spongebob-black) !important; }
+.bg-green { background-color: var(--spongebob-green) !important; }
+.bg-light-gray { background-color: var(--spongebob-light-gray) !important; }
+.bg-black.bg-transparent { background-color: #3333339A; }
+
+.green { color: var(--spongebob-green) !important; }
+.aliceblue { color: var(--spongebob-aliceblue) !important; }
+.black { color: var(--spongebob-black) !important; }
+.gray { color: var(--spongebob-gray) !important; }
+.red { color: var(--spongebob-red) !important; }
+.dark-blue { color: var(--spongebob-dark-blue) !important; }
+.light-gray { color: var(--spongebob-light-gray) !important; }
+.white { color: var(--spongebob-white) !important; }
+
+.border-round-2 {
+    border-radius: 0.5rem;
+}
+.border-round-4 {
+    border-radius: 1rem;
+}
+
+button, .clickable {
+    cursor: pointer;
+}
+button {
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1em;
+    padding: 0.5rem 1rem
+}
+button.big {
+    width: 15rem;
+    padding: 0.75rem 1rem;
+}
+button.primary {
+    background-color: var(--spongebob-aliceblue);
+    color: var(--spongebob-dark-blue);
+}
+button.primary:hover {
+    transition: 0.5s;
+    background-color: #61BEB3;
+}
+button.secondary {
+    background-color: var(--spongebob-red);
+    color: var(--spongebob-white);
+    margin: 0 0.5rem;
+}
+button.secondary:hover {
+    background-color: #C54A4A;
+}
+button.secondary.outline {
+    background-color: var(--spongebob-white);
+    color: var(--spongebob-red);
+    border: 2px solid var(--spongebob-red);
+    margin: 0 0.5rem;
+    transition: 0.3s;
+}
+button.secondary.outline:hover {
+    background-color: #FF9F9F;
+}
+
+.modal.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal.content {
+    background-color: var(--spongebob-white);
+    text-align: center;
+    max-width: 80%;
+}
+.modal.content p {
+    margin-bottom: 1.25rem;
+    font-family: 'spongebob', fantasy;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.float {
+    animation: float 2s ease-in-out infinite;
+}
+
+.load-animation {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.loaded {
+    opacity: 1;
+}
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}

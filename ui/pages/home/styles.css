@@ -1,0 +1,22 @@
+@import url('../../static/styles/global-styles.css');
+
+body {
+    background-image: url('../../static/assets/background.png');
+}
+
+.logo {
+    width: 22rem;
+}
+
+#character-display {
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: 6rem;
+    height: auto;
+}
+
+#character-display img {
+    width: 9rem;
+    height: auto;
+}

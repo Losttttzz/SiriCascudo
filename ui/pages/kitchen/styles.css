@@ -1,10 +1,8 @@
-@import url('./reset.css');
-@import url('./utils.css');
-@import url('./global-styles.css');
+@import url('../../static/styles/global-styles.css');
 
 body {
     background-color: var(--spongebob-aliceblue);
-    background-image: url("static/assets/kitchen-background.jpg");
+    background-image: url("../../static/assets/kitchen-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -85,7 +83,7 @@ body.loaded {
     min-height: 8rem;
     padding: 1rem 1rem 1rem 2rem;
 
-    background-image: url("static/assets/speech-bubble.png");
+    background-image: url("../../static/assets/speech-bubble.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -95,7 +93,6 @@ body.loaded {
     justify-content: center;
 
     text-align: center;
-    font-family: 'spongebob', fantasy;
     font-weight: bold;
     font-size: 1.25em;
 }
@@ -122,33 +119,14 @@ body.loaded {
 .container #order #burgers .plate {
     min-width: 15rem;
     max-width: 15rem;
-    background-image: url("static/assets/unselectedbackground.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    box-shadow: none;
+    background-color: #28282890;
+    border-radius: 1rem;
     overflow: hidden;
     position: relative;
 }
-
-.container #order #burgers .plate .plate-image {
-    position: relative;
-    top: 8px;
-    z-index: 1;
-}
-
 .container #order #burgers .plate.selected {
-    background-image: url("static/assets/selectedbackground.png");
+    background-color: #9570FF60;
 }
-
-
-.container #order #burgers .plate.selected {
-    background-image: url("static/assets/selectedbackground.png");
-}
-
 .container #order #burgers .plate .plate-image {
     z-index: 0;
     object-fit: cover;
