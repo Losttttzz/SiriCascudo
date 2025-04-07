@@ -1,28 +1,19 @@
-// Aguarda um tempo para adicionar animação de carregamento
 setTimeout(() => {
   document.body.classList.add("loaded");
 }, 200);
 
-// Atualiza o contador de moedas ao carregar a página
-document.addEventListener("DOMContentLoaded", () => {
-  const moedaContador = document.getElementById("moeda-contador");
-
-  let moedas = parseInt(localStorage.getItem("moedas")) || 0;
-
-  if (moedaContador) {
-    moedaContador.innerText = `💰 ${moedas}`;
-  } else {
-    console.error("Elemento #moeda-contador não encontrado!");
+document.addEventListener("DOMContentLoaded", renderCoins());
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+      renderCoins();
   }
 });
 
-// Captura botões
 const playButtonElement = document.getElementById("play-button");
 const charactersButtonElement = document.getElementById("characters-button");
 const creditsButtonElement = document.getElementById("credits-button");
 const historyButtonElement = document.getElementById("history-button");
 
-// Adiciona eventos de clique
 playButtonElement.addEventListener("click", () =>
   navigate("/score?status=start")
 );
@@ -39,4 +30,10 @@ function navigate(targetPage) {
     document.body.classList.remove("fade-out");
     window.location.href = targetPage;
   }, 500);
+}
+
+function renderCoins() {
+  const coinCounter = document.getElementById("coin-counter");
+  const coins = parseInt(localStorage.getItem("coins")) || 0;
+  coinCounter.innerText = `💰 ${coins}`;
 }
