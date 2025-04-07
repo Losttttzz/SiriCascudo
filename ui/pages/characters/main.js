@@ -28,16 +28,15 @@ const characters = [
     name: "Nosferatu",
     label: "Nosferatu",
     imagePath:
-      localStorage.getItem("nosferatuComprado") === "true"
+      localStorage.getItem("unlockedNosferatu") === "true"
         ? "../../static/assets/characters/nosferatu.png"
         : "../../static/assets/characters/srpuffi.png",
-    locked: localStorage.getItem("nosferatuComprado") !== "true",
+    locked: localStorage.getItem("unlockedNosferatu") !== "true",
   },
 ];
 
 function renderCharacterCards() {
   const containerElement = document.getElementById("card-container");
-  let moedas = parseInt(localStorage.getItem("moedas")) || 0;
 
   characters.forEach((character) => {
     const cardElement = document.createElement("div");
@@ -59,13 +58,14 @@ function renderCharacterCards() {
     const characterSelectButtonElement = document.createElement("button");
 
     if (character.locked) {
+      const coins = parseInt(localStorage.getItem("coins")) || 0;
+      
       characterSelectButtonElement.innerText = `Comprar (4 💰)`;
       characterSelectButtonElement.classList.add("buy-button");
       characterSelectButtonElement.addEventListener("click", () => {
-        if (moedas >= 4) {
-          moedas -= 4;
-          localStorage.setItem("moedas", moedas);
-          localStorage.setItem("nosferatuComprado", "true");
+        if (coins >= 4) {
+          localStorage.setItem("coins", coins - 4);
+          localStorage.setItem("unlockedNosferatu", "true");
 
           window.location.reload();
         } else {

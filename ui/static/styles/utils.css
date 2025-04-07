@@ -38,13 +38,13 @@
 .margin-4 { margin: 1rem !important; }
 .margin-6 { margin: 1.5rem !important; }
 
-.title.font-small { font-size: 1rem; }
-.title.font-regular { font-size: 1.5rem; }
-.title.font-big { font-size: 2rem; }
+.title.font-small { font-size: 1em; }
+.title.font-regular { font-size: 1.5em; }
+.title.font-big { font-size: 2em; }
 
-.font-small { font-size: 0.75rem; }
-.font-regular { font-size: 1rem; }
-.font-big { font-size: 1.25rem; }
+.font-small { font-size: 0.75em; }
+.font-regular { font-size: 1em; }
+.font-big { font-size: 1.25em; }
 
 .bold { font-weight: bold; }
 .text-center { text-align: center; }
@@ -83,6 +83,7 @@
     background: none;
     border: none;
 }
+.bg-aliceblue { background-color: var(--spongebob-aliceblue) !important; }
 .bg-white { background-color: var(--spongebob-white) !important; }
 .bg-black { background-color: var(--spongebob-black) !important; }
 .bg-green { background-color: var(--spongebob-green) !important; }

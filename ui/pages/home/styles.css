@@ -21,15 +21,9 @@ body {
   height: auto;
 }
 
-.moeda-contador {
+#coin-counter {
   position: absolute;
-  top: 10px;
-  right: 20px;
-  background: rgba(182, 243, 255, 0.9);
-  padding: 10px 10px;
-  border-radius: 10px;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: black;
+  top: 0.5rem;
+  right: 1rem;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
